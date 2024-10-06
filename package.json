@@ -1,0 +1,17 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve public",  // Adjust according to your setup
+    "build": "echo 'No build step required'" // Adjust or remove if you have a build step
+  },
+  "dependencies": {
+    "firebase": "^10.0.0" // Adjust the version based on what you installed
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
