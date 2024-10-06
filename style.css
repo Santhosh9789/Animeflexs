@@ -1,1 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://your-background-image-url.jpg'); /* Replace with the URL of your background image */
+    background-size: cover;
+    background-position: center;
+    color: #333;
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full viewport height */
+}
 
+h2 {
+    color: #fff; /* Change header color for better visibility */
+}
+
+#authContainer {
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 400px; /* Set a max width for the container */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+#error {
+    color: red;
+}
+
+/* Profile Picture Styles */
+.profile-picture {
+    display: block;
+    margin: 20px auto; /* Center horizontally */
+    border-radius: 50%; /* Make it a circle */
+    width: 100px; /* Set the width */
+    height: 100px; /* Set the height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border: 2px solid #fff; /* Optional border */
+}
