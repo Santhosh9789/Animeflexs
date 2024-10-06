@@ -12,6 +12,9 @@ body {
     background-repeat: no-repeat; /* Prevents the image from repeating */
     color: white; /* Adjust text color for better visibility */
     font-family: Arial, sans-serif; /* Set a default font */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
 }
 
 /* Profile Picture styling */
@@ -21,8 +24,42 @@ body {
     border-radius: 50%; /* Make the image circular */
     margin: 20px; /* Add some margin around the image */
     display: block; /* Center the image */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
+}
+
+/* Authentication Container Styling */
+#authContainer {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for forms */
+    padding: 20px; /* Add padding around the container */
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+    max-width: 400px; /* Limit the width of the form */
+    width: 100%; /* Make sure it is responsive */
+}
+
+/* Input and Button Styling */
+input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Add padding for better usability */
+    margin: 10px 0; /* Space between inputs */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+button {
+    width: 100%; /* Full width */
+    padding: 10px; /* Add padding */
+    margin: 10px 0; /* Space between buttons */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white; /* Text color */
+    font-size: 16px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Change button color on hover */
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
 /* Simple CSS to hide forms */
@@ -30,12 +67,14 @@ body {
     display: none;
 }
 
-#authContainer {
-    margin-top: 20px; /* Adds space between buttons and forms */
-}
-
 /* Hide the container when forms are not displayed */
 #loginFormContainer,
 #signupFormContainer {
     display: none;
+}
+
+/* Error message styling */
+#errorMessage {
+    color: red; /* Red color for error messages */
+    font-size: 14px; /* Adjust font size */
 }
