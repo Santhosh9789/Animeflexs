@@ -1,9 +1,9 @@
-name: Deploy to Firebase Hosting
+name: Deploy to Firebase Hosting and GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Change to the branch you want to deploy from
+      - main  # Change this to the branch you want to deploy from
 
 jobs:
   build:
@@ -26,14 +26,41 @@ jobs:
       - name: Configure Firebase credentials
         run: |
           echo "const firebaseConfig = {
-            apiKey: '${{ secrets.FIREBASE_API_KEY }}',
-            authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
-            projectId: '${{ secrets.FIREBASE_PROJECT_ID }}',
-            storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
-            messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
-            appId: '${{ secrets.FIREBASE_APP_ID }}',
-            measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+            apiKey: '${{ AIzaSyDdRzTjyVu7cwvhoUFTqZsLlRnmHx77t_0 }}',
+            authDomain: '${{ fir-website-32e50.firebaseapp.com }}',
+            projectId: '${{ fir-website-32e50 }}',
+            storageBucket: '${{ fir-website-32e50.appspot.com }}',
+            messagingSenderId: '${{ 908676658823 }}',
+            appId: '${{ 1:908676658823:web:35d7f2a8e453f2cbe8ea22 }}',
+            measurementId: '${{ G-XQKPYCL968 }}'
           };" > public/firebase-config.js  # Adjust path as needed
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --token ${{ AIzaSyDdRzTjyVu7cwvhoUFTqZsLlRnmHx77t_0 }}
+
+  deploy_github_pages:
+    runs-on: ubuntu-latest
+    needs: build  # Ensure Firebase deploy finishes before deploying to GitHub Pages
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # You can change this to a specific version you prefer
+
+      - name: Install dependencies
+        run: |
+          npm install firebase
+
+      - name: Build project
+        run: |
+          npm run build  # Use this if you have a build step; otherwise, skip this
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ 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 }}  # Use the secret for the GitHub token
+          publish_dir: ./  # Change this if your output directory is different
