@@ -1,1 +1,2 @@
-# Animeflexs
+# Animeflex
+Project Animeflex

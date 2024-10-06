@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Auth Example</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+
+    <!-- Firebase setup script -->
+    <script type="module" src="firebase-setup.js"></script> <!-- Firebase initialization -->
+
+    <!-- Firebase authentication logic -->
+    <script type="module" src="firebase-auth.js"></script> <!-- Firebase authentication logic -->
+
+    <style>
+        /* Simple CSS to hide forms */
+        #signupForm {
+            display: none;
+        }
+        
+        #authContainer {
+            margin-top: 20px; /* Adds space between buttons and forms */
+        }
+
+        /* Hide the container when forms are not displayed */
+        #loginFormContainer,
+        #signupFormContainer {
+            display: none;
+        }
+
+        /* Background image and body styling */
+        body {
+            background-image: url('https://raw.githubusercontent.com/Santhosh9789/Animeflex/main/Image%20foulder/your-image-name.jpg'); /* Replace with your actual image name */
+            background-size: cover; /* Makes sure the background covers the entire area */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            color: white; /* Adjust text color for better visibility */
+            font-family: Arial, sans-serif; /* Set a default font */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toggle Buttons -->
+    <div>
+        <button onclick="showLoginForm()">Login</button>
+        <button onclick="showSignupForm()">Sign Up</button>
+    </div>
+
+    <!-- Authentication Container -->
+    <div id="authContainer">
+        <!-- Login Form -->
+        <div id="loginFormContainer">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Enter Email" required>
+                <input type="password" id="loginPassword" placeholder="Enter Password" required>
+                <button type="button" onclick="login()">Login</button>
+                <p id="loginError" style="color: red;"></p>
+            </form>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signupFormContainer">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <input type="email" id="signupEmail" placeholder="Enter Email" required>
+                <input type="password" id="signupPassword" placeholder="Enter Password" required>
+                <button type="button" onclick="signup()">Sign Up</button>
+                <p id="signupError" style="color: red;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Logout button (initially hidden) -->
+    <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
+
+    <!-- JavaScript to toggle between login and sign-up forms -->
+    <script>
+        // Show login form by default
+        showLoginForm();
+
+        function showLoginForm() {
+            document.getElementById("loginFormContainer").style.display = "block";
+            document.getElementById("signupFormContainer").style.display = "none";
+        }
+
+        function showSignupForm() {
+            document.getElementById("signupFormContainer").style.display = "block";
+            document.getElementById("loginFormContainer").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
