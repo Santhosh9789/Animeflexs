@@ -1,5 +1,5 @@
 import { auth } from './firebase-setup.js'; // Import the auth object from firebase-setup.js
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
 
 // Sign Up Function
 window.signup = function () {
@@ -13,7 +13,11 @@ window.signup = function () {
             document.getElementById('signupForm').reset();
         })
         .catch((error) => {
-            document.getElementById('signupError').textContent = error.message;
+            // Customize error messages based on error code
+            const errorMessage = error.code === 'auth/email-already-in-use' 
+                ? 'This email is already in use.'
+                : error.message;
+            document.getElementById('signupError').textContent = errorMessage;
         });
 };
 
@@ -28,9 +32,16 @@ window.login = function () {
             document.getElementById('loginError').textContent = '';
             document.getElementById('loginForm').reset();
             document.getElementById('logoutButton').style.display = 'block'; // Show the logout button after successful login
+            
+            // Optionally redirect to another page
+            // window.location.href = 'dashboard.html'; // Uncomment to redirect
         })
         .catch((error) => {
-            document.getElementById('loginError').textContent = error.message;
+            // Customize error messages based on error code
+            const errorMessage = error.code === 'auth/wrong-password' 
+                ? 'Incorrect password. Please try again.'
+                : error.message;
+            document.getElementById('loginError').textContent = errorMessage;
         });
 };
 
@@ -43,3 +54,16 @@ window.logout = function () {
         console.error("Error logging out:", error);
     });
 };
+
+// Listen for authentication state changes
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in
+        console.log('User is signed in:', user);
+        document.getElementById('logoutButton').style.display = 'block'; // Show logout button
+    } else {
+        // User is signed out
+        console.log('User is signed out');
+        document.getElementById('logoutButton').style.display = 'none'; // Hide logout button
+    }
+});
